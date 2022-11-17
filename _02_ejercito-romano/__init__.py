@@ -1,12 +1,14 @@
 from functools import reduce
 from operator import pow
-import math
+from math import floor, sqrt
 
 input = int(input("Entrada: "))
 legiones = []
 
 while input > 0:
-    n = math.floor(math.sqrt(input))
+    # n - tamano del lado del legion cuadradatico mas grande posible
+    n = floor(sqrt(input))
+    # Restamos cuadrado del n del numero de entrada
     input -= pow(n, 2)
     legiones.append(n)
 
