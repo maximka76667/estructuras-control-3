@@ -4,8 +4,7 @@ def printHexagon(n, c):
         # Cantidad de symbols en linea = int((n - abs(n - i) - 1) * 2 + n)
         print(abs(i - n) * " " + int((n - abs(n - i) - 1) * 2 + n) * c)
 
-data = input("Hexagon options (n c): ")
-# n = data[0], c = data[2], _ - espacio
-[n, _, c] = data
+# n (longitud del lado) = input[0], c (caracter del hexagono) = input[2], _ - espacio
+[n, _, c] = input("Hexagon options (n c): ")
         
 printHexagon(int(n), c)
