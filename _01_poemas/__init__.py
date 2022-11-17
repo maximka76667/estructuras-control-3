@@ -2,7 +2,7 @@ import re
 
 # FUNCTIONS
 def takeSoundsFromLastStressedVowel(word):
-    # Se usa para encontrar penultima vocal en palabra     
+    # Se usa para encontrar penultima vocal en el verso     
     isFirstFound = False
     
     # Bucle desde la ultima letra hasta la primera
@@ -14,7 +14,7 @@ def takeSoundsFromLastStressedVowel(word):
                 # Devolvemos todos los sonidos desde la penultima vocal
                 return word[i:len(word)]
             
-            # Ultima vocal encontrada           
+            # Ultima vocal encontrada
             isFirstFound = True
             continue
         
@@ -56,25 +56,29 @@ poemTypes = ["Pareado", "Terceto", ["Cuarteto", "Cuarteta", "Seguidilla", "Cuade
 
 n = int(input("N: "))
 
+# Si tiene menos que 2 versos y mas que 4 es desconocido
 if n < 2 or n > 4:
     print(poemTypes[-1])
     exit()
 
+# Pedimos la poema
 for i in range(0, n, 1):
-    # Guardamos en el array solo la ultima palabra del verso     
-    lastWords.append(input().split(" ")[-1])
+    lastWords.append(input())
 
 # Todos los sonidos desde la penultima vocal de cado verso
 rimas = list(map(takeSoundsFromLastStressedVowel, lastWords))
 
+# De dos versos
 if isPareado(rimas):
     print(poemTypes[0])
     exit()
     
+# De tres versos
 elif isTerceto(rimas):
     print(poemTypes[1])
     exit()
-    
+
+# De cuatro versos
 elif n == 4:
     isCuatroVersos = getTypesFourLinesPoem(rimas).index(True)
     if(isCuatroVersos != -1):
